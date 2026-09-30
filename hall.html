@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>رامي و ساندرا · 17.10.2026</title>
+  <meta name="description" content="يسعدنا دعوتكم لحضور صلاة الإكليل يوم السبت 17 أكتوبر 2026 الساعة 9 مساءً بكنيسة رئيس الملائكة ميخائيل، ثم حفل الزفاف بقاعة تريفي أسيوط." />
+  <meta name="theme-color" content="#1f2a44" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="رامي و ساندرا" />
+  <meta property="og:title" content="دعوة فرح رامي و ساندرا 💍" />
+  <meta property="og:description" content="السبت 17 أكتوبر 2026 · الساعة 9 مساءً · كنيسة رئيس الملائكة ميخائيل ثم قاعة تريفي أسيوط" />
+  <meta property="og:url" content="https://ramy-michael.github.io/wedding-RS/hall.html" />
+  <meta property="og:image" content="https://ramy-michael.github.io/wedding-RS/images/preview.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="ar_EG" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💍</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=Tajawal:wght@300;400;500;700&family=Amiri:ital@0;1&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body data-version="hall" class="locked">
+
+  <!-- ============ ENVELOPE INTRO ============ -->
+  <div id="intro" class="intro" aria-label="افتح الدعوة">
+    <div class="intro-glow"></div>
+    <div class="intro-guest" id="introGuest" hidden>
+      <span class="to">إلى</span>
+      <span class="guest-name" data-guest></span>
+    </div>
+    <p class="intro-hint">وصلتك دعوة خاصة</p>
+    <div class="envelope" id="envelope">
+      <div class="env-back"></div>
+      <div class="env-letter">
+        <span class="script">احفظ التاريخ</span>
+        <span class="letter-date">17 · 10 · 2026</span>
+      </div>
+      <div class="env-front"></div>
+      <div class="env-flap"></div>
+      <button class="seal" id="openBtn" aria-label="افتح الدعوة">
+        <span class="seal-initials" data-initials>&hearts;</span>
+      </button>
+    </div>
+    <p class="intro-tap">اضغط على الختم لفتح الدعوة</p>
+  </div>
+
+  <canvas id="petals" aria-hidden="true"></canvas>
+  <div class="progress" id="progress"></div>
+
+  <main>
+    <!-- ============ HERO ============ -->
+    <section class="hero" id="home">
+      <div class="hero-bg"></div>
+      <div class="floating-hearts" id="hearts" aria-hidden="true"></div>
+
+      <div class="hero-inner">
+        <p class="guest-line reveal" id="guestLine" hidden><span data-guest></span>، يشرفنا ويسعدنا حضورك</p>
+        <p class="eyebrow reveal">بكل الحب ومع عائلاتنا ندعوكم لمشاركتنا فرحتنا</p>
+        <h1 class="names reveal">
+          <span data-groom>رامي</span>
+          <span class="amp">&amp;</span>
+          <span data-bride>ساندرا</span>
+        </h1>
+        <p class="tagline"><span id="typed"></span><span class="caret">|</span></p>
+
+        <div class="photo-wrap reveal" id="photoWrap">
+          <div class="photo-ring ring-1"></div>
+          <div class="photo-ring ring-2"></div>
+          <div class="photo-arch">
+            <img src="images/childs%20image%20for%20us.png" alt="رامي و ساندرا" id="couplePhoto" />
+          </div>
+          <span class="sparkle s1">✦</span>
+          <span class="sparkle s2">✧</span>
+          <span class="sparkle s3">✦</span>
+          <span class="sparkle s4">✧</span>
+        </div>
+
+        <div class="date-badge reveal">
+          <span>السبت</span>
+          <strong>17 <em>أكتوبر</em> 2026</strong>
+          <span>9:00 مساءً</span>
+        </div>
+      </div>
+
+      <a href="#countdown" class="scroll-down" aria-label="انزل لتحت">
+        <span></span>
+      </a>
+    </section>
+
+    <!-- ============ COUNTDOWN ============ -->
+    <section class="countdown-section" id="countdown">
+      <h2 class="section-title reveal">العد التنازلي</h2>
+      <p class="section-sub reveal">لحد ما يبدأ الأبد</p>
+      <div class="countdown reveal" id="timer">
+        <div class="cd"><span class="num" data-cd="days">00</span><span class="lbl">يوم</span></div>
+        <div class="cd"><span class="num" data-cd="hours">00</span><span class="lbl">ساعة</span></div>
+        <div class="cd"><span class="num" data-cd="minutes">00</span><span class="lbl">دقيقة</span></div>
+        <div class="cd"><span class="num" data-cd="seconds">00</span><span class="lbl">ثانية</span></div>
+      </div>
+      <p class="married-msg" id="marriedMsg" hidden>تم الإكليل! 💍</p>
+    </section>
+
+    <!-- ============ VERSE ============ -->
+    <section class="verse">
+      <div class="verse-inner reveal">
+        <span class="quote-mark">&rdquo;</span>
+        <p class="verse-text">المحبة لا تسقط أبدًا</p>
+        <span class="ref">كورنثوس الأولى 13: 8</span>
+      </div>
+    </section>
+
+    <!-- ============ STORY ============ -->
+    <section class="story" id="story">
+      <h2 class="section-title reveal">حكايتنا</h2>
+      <p class="section-sub reveal">عشر سنين… ورحلة واحدة جميلة</p>
+
+      <div class="timeline" id="timeline">
+        <div class="tl-line"><div class="tl-fill" id="tlFill"></div></div>
+
+        <article class="tl-item">
+          <div class="tl-dot">🎓</div>
+          <div class="tl-card">
+            <span class="tl-year">2016</span>
+            <h3>أول الحكاية</h3>
+            <p>في 2016، بدأت حكايتنا من الكلية… كنا في نفس السكاشن، ومع الوقت بقينا بنقضي وقت أكتر سوا، بين المحاضرات والمذاكرة والبروجكتات.</p>
+            <p>ومن أجمل تفاصيل أيام الجامعة إننا كنا بنذاكر سوا في <strong>"هاوس"</strong>، ونعمل بروجكتات سوا، ونشارك بعض تفاصيل يومنا الصغيرة.</p>
+          </div>
+        </article>
+
+        <article class="tl-item">
+          <div class="tl-dot">🤍</div>
+          <div class="tl-card">
+            <span class="tl-year">2017 – 2019</span>
+            <h3>بنكبر سوا</h3>
+            <p><strong>مش بس كلية… كانت حياة كاملة بنعيشها سوا ❤️</strong></p>
+            <p>ومع الكلية، كانت لينا حياة تانية جميلة في الكنيسة؛ رحلات، اجتماعات، خروجات، وخدمة… ومع كل مناسبة كانت صداقتنا بتكبر أكتر، من غير ما نعرف إن كل اللحظات دي كانت بتكتب أول فصول قصتنا.</p>
+          </div>
+        </article>
+
+        <article class="tl-item">
+          <div class="tl-dot">✨</div>
+          <div class="tl-card">
+            <span class="tl-year">2020</span>
+            <h3>فصل جديد</h3>
+            <p>جت لحظة التخرج، واتخرجنا سوا سنة 2020. بدأ كل واحد فينا مرحلة جديدة من حياته… لكن الحاجة اللي ما اتغيرتش إننا فضلنا موجودين جنب بعض.</p>
+            <p>دخل الجيش، وبدأنا الشغل، واتغيرت تفاصيل حياتنا… لكن فضلنا بنشارك بعض الأيام الحلوة والصعبة، والنجاحات، والتفاصيل الصغيرة اللي محدش غيرنا كان يعرفها.</p>
+          </div>
+        </article>
+
+        <article class="tl-item">
+          <div class="tl-dot">🙏</div>
+          <div class="tl-card">
+            <span class="tl-year">2021 – 2025</span>
+            <h3>حياة وشغل وخدمة</h3>
+            <p>سنين عدت وإحنا مش بس أصحاب، لكن كمان بنخدم سوا في الكنيسة. خدمنا، تعبنا، ضحكنا، وعشنا تفاصيل كتير جدًا جنب بعض.</p>
+            <p>واكتشفنا إن أجمل حاجة في الحكاية… <strong>إننا كنا بنكبر سوا.</strong> في الدراسة، وفي الشغل، وفي الخدمة، وفي الحياة.</p>
+          </div>
+        </article>
+
+        <article class="tl-item">
+          <div class="tl-dot">💍</div>
+          <div class="tl-card highlight">
+            <span class="tl-year">2026</span>
+            <h3>والأبد يبدأ هنا</h3>
+            <p>من نفس السكشن… لجلسات المذاكرة في هاوس… للتخرج والجيش والشغل… ولحد ما بقينا بنخدم سوا ونشارك بعض الحياة.</p>
+            <p><strong>والنهارده، مش بنبدأ قصة جديدة… إحنا بنكمل أجمل قصة بدأت من زمان. 🤍</strong></p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============ STATS ============ -->
+    <section class="stats">
+      <div class="stat reveal"><span class="stat-num" data-count="10">0</span><span class="stat-lbl">سنين من الذكريات</span></div>
+      <div class="stat reveal"><span class="stat-num" data-count="2016">0</span><span class="stat-lbl">بداية الحكاية</span></div>
+      <div class="stat reveal"><span class="stat-num infinity">∞</span><span class="stat-lbl">للأبد</span></div>
+    </section>
+
+    <!-- ============ DETAILS ============ -->
+    <section class="details" id="details">
+      <h2 class="section-title reveal">الموعد والمكان</h2>
+      <p class="section-sub reveal">يشرفنا ويسعدنا حضوركم</p>
+
+      <div class="cards">
+        <div class="event-card reveal">
+          <div class="card-icon">
+            <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M32 4v10M27 9h10M20 30l12-14 12 14v28H20z M12 58V38l8-6M52 58V38l-8-6M8 58h48M28 58V46a4 4 0 0 1 8 0v12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3>صلاة الإكليل المقدس</h3>
+          <p class="venue">كنيسة رئيس الملائكة ميخائيل</p>
+          <div class="card-meta">
+            <span>📅 السبت 17 أكتوبر 2026</span>
+            <span>🕘 الساعة 9:00 مساءً</span>
+          </div>
+          <a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Church+of+Archangel+Michael+Asyut">📍 عرض على الخريطة</a>
+        </div>
+
+        <div class="event-card reveal">
+          <div class="card-icon">
+            <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M22 8h8l-2 16a6 6 0 0 1-4 0zM34 8h8l-2 16a6 6 0 0 1-4 0zM26 24v14M38 24v14M20 38h12M32 38h12M14 58h36M18 58V46h28v12M32 46v12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3>حفل الزفاف</h3>
+          <p class="venue">قاعة تريفي أسيوط</p>
+          <div class="card-meta">
+            <span>📅 السبت 17 أكتوبر 2026</span>
+            <span>🥂 بعد صلاة الإكليل مباشرةً</span>
+          </div>
+          <a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Trevi+Asyut">📍 عرض على الخريطة</a>
+        </div>
+      </div>
+
+      <ul class="program reveal">
+        <li><span class="p-ico">⛪</span><span>صلاة الإكليل · كنيسة رئيس الملائكة ميخائيل</span><span class="p-time">9:00 م</span></li>
+        <li><span class="p-ico">🚗</span><span>التوجه للقاعة سوا</span><span class="p-time">بعدها</span></li>
+        <li><span class="p-ico">💃</span><span>عشاء ورقص واحتفال · قاعة تريفي أسيوط</span><span class="p-time">لآخر الليل</span></li>
+      </ul>
+
+      <div class="actions reveal">
+        <button class="btn btn-outline" id="calendarBtn">📆 أضف الموعد للتقويم</button>
+      </div>
+    </section>
+
+    <!-- ============ FOOTER ============ -->
+    <footer class="footer">
+      <p class="closing reveal">ودي لسه البداية… ✨</p>
+      <p class="footer-names reveal"><span data-groom>رامي</span> <span class="amp">&amp;</span> <span data-bride>ساندرا</span></p>
+      <p class="footer-date reveal">17 · 10 · 2026</p>
+      <p class="footer-heart">معمولة بكل <span>♥</span></p>
+    </footer>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="script.js"></script>
+</body>
+</html>

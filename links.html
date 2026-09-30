@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex" />
+  <title>روابط الدعوات</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    body { background: var(--blue-mist); }
+    .gen { max-width: 760px; margin: 0 auto; padding: 3rem 16px 4rem; }
+    .gen h1 { font-family: var(--f-ar-title); color: var(--navy); text-align: center; font-size: clamp(2rem, 7vw, 2.8rem); }
+    .gen .hint { text-align: center; color: var(--muted); margin-bottom: 2rem; }
+    .panel { background: #fff; border-radius: var(--radius); padding: 1.5rem; box-shadow: var(--shadow); }
+    label { display: block; font-weight: 700; color: var(--navy); margin-bottom: 0.4rem; }
+    textarea { width: 100%; min-height: 160px; padding: 0.8rem 1rem; border-radius: 14px; border: 1px solid var(--blue-soft); font: inherit; font-size: 1.05rem; resize: vertical; }
+    textarea:focus { outline: 2px solid var(--blue); }
+    .choice { display: flex; flex-wrap: wrap; gap: 0.6rem; margin: 1.2rem 0; }
+    .choice label { display: flex; align-items: center; gap: 0.4rem; font-weight: 500; padding: 0.5rem 1rem; border: 1px solid var(--blue-soft); border-radius: 999px; cursor: pointer; margin: 0; }
+    .choice input:checked + span { color: var(--gold); font-weight: 700; }
+    .result { list-style: none; margin-top: 1.5rem; display: grid; gap: 0.7rem; }
+    .result li { background: #fff; border-radius: 14px; padding: 0.8rem 1rem; display: flex; flex-wrap: wrap; align-items: center; gap: 0.6rem; box-shadow: 0 6px 20px -12px rgba(31,42,68,.35); }
+    .result .g { font-weight: 700; color: var(--navy); margin-inline-end: auto; }
+    .result .btn { padding: 0.45rem 1rem; font-size: 0.95rem; }
+    .wa { background: #25d366; border-color: #25d366; }
+  </style>
+</head>
+<body>
+  <main class="gen">
+    <h1>روابط الدعوات</h1>
+    <p class="hint">اكتب اسم كل ضيف في سطر، وهيطلعلك لينك خاص بيه باسمه على الظرف.</p>
+
+    <div class="panel">
+      <label for="names">أسماء الضيوف</label>
+      <textarea id="names" placeholder="عمو سمير&#10;طنط مريم&#10;أسرة أ/ جرجس"></textarea>
+
+      <div class="choice">
+        <label><input type="radio" name="ver" value="index.html" checked /><span>⛪ الكنيسة بس</span></label>
+        <label><input type="radio" name="ver" value="hall.html" /><span>🥂 الكنيسة + القاعة</span></label>
+      </div>
+
+      <button class="btn" id="make">✨ اعمل اللينكات</button>
+    </div>
+
+    <ul class="result" id="result"></ul>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    const base = location.href.replace(/[^/]*([?#].*)?$/, "");
+    const toastEl = document.getElementById("toast");
+    function toast(msg) {
+      toastEl.textContent = msg;
+      toastEl.classList.add("show");
+      clearTimeout(toast.t);
+      toast.t = setTimeout(() => toastEl.classList.remove("show"), 2000);
+    }
+
+    document.getElementById("make").addEventListener("click", () => {
+      const page = document.querySelector('input[name="ver"]:checked').value;
+      const names = document.getElementById("names").value.split("\n").map((n) => n.trim()).filter(Boolean);
+      const list = document.getElementById("result");
+      list.innerHTML = "";
+      if (!names.length) return toast("اكتب اسم واحد على الأقل");
+
+      names.forEach((name) => {
+        const link = `${base}${page}?to=${encodeURIComponent(name)}`;
+        const msg = `${name}، يسعدنا دعوتك لحضور فرح رامي و ساندرا يوم السبت 17 أكتوبر 2026 💍\n${link}`;
+
+        const li = document.createElement("li");
+        const g = document.createElement("span");
+        g.className = "g";
+        g.textContent = name;
+
+        const copy = document.createElement("button");
+        copy.className = "btn btn-outline";
+        copy.textContent = "📋 انسخ";
+        copy.onclick = async () => {
+          try { await navigator.clipboard.writeText(msg); toast("اتنسخ ✔"); }
+          catch (_) { prompt("انسخ الرسالة:", msg); }
+        };
+
+        const wa = document.createElement("a");
+        wa.className = "btn wa";
+        wa.target = "_blank";
+        wa.rel = "noopener";
+        wa.href = `https://wa.me/?text=${encodeURIComponent(msg)}`;
+        wa.textContent = "واتساب";
+
+        const open = document.createElement("a");
+        open.className = "btn btn-outline";
+        open.target = "_blank";
+        open.rel = "noopener";
+        open.href = link;
+        open.textContent = "👁 شوف";
+
+        li.append(g, copy, wa, open);
+        list.appendChild(li);
+      });
+    });
+  </script>
+</body>
+</html>
