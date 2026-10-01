@@ -92,13 +92,18 @@ let W = 0, H = 0;
 
 function resizeCanvas() {
   const dpr = Math.min(window.devicePixelRatio || 1, 2);
+  const widthChanged = window.innerWidth !== W;
   W = window.innerWidth;
   H = window.innerHeight;
   canvas.width = W * dpr;
   canvas.height = H * dpr;
   ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-  const count = Math.round(Math.min(40, W / 30));
-  petals = Array.from({ length: count }, () => makePetal(true));
+  // Mobile address bars change only the height while scrolling —
+  // keep the petals where they are instead of re-scattering them.
+  if (widthChanged) {
+    const count = Math.round(Math.min(40, W / 30));
+    petals = Array.from({ length: count }, () => makePetal(true));
+  }
 }
 
 function makePetal(randomY) {
